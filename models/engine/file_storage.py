@@ -4,7 +4,7 @@ Contains the FileStorage class
 """
 
 import json
-from models.amenity import Amenity
+"""from models.amenity import Amenity
 from models.base_model import BaseModel
 from models.city import City
 from models.place import Place
@@ -14,6 +14,7 @@ from models.user import User
 
 classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
+"""
 
 
 class FileStorage:
@@ -49,5 +50,5 @@ class FileStorage:
                 jo = json.load(f)
             for key in jo:
                 self.__objects[key] = classes[jo[key]["__class__"]](**jo[key])
-        except:
-            pass
+        except FileNotFoundError:
+            return
