@@ -44,15 +44,15 @@ class HBNBCommand(cmd.Cmd):
         """command to exit the console"""
         return True
 
-    def do_create(self, argv: str):
+    def do_create(self, argv):
         """creates new instance of BaseModel,
         saves it (to the JSON file) and prints the id
         """
         if (args := check_args(argv)) is not None:
             print(eval(args[0])().id)
             storage.save()
-            
-    def do_show(self, argv: str):
+
+    def do_show(self, argv):
         """Prints the string representation of an instance based on
         the class name and id.
         """
@@ -66,6 +66,35 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     print(storage.all()[key])
 
-            
+    def do_destroy(self, argv):
+        """Deletes an instance based on the class name and id
+        (save the change into the JSON file)
+        """
+        if (arg_list := check_args(argv)) is not None:
+            if len(arg_list) == 1:
+                print("** instance id is missing**")
+            else:
+                key = "{}.{}".format(*arg_list)
+                if key in storage.all():
+                    del storage.all()[key]
+                    storage.save()
+                else:
+                    print("** no instance found **")
+
+    def do_all(self, argv):
+        """"Prints all string reps of all instances, based or not, on the class
+        name"""
+        arg_list = argv.split()
+        objects = storage.all().values()
+        if not arg_list:
+            print([str(obj) for obj in objects])
+        else:
+            if arg_list[0] not in __classes:
+                print("** class doesn't exist **")
+            else:
+                print([str(obj) for obj in objects
+                       if arg_list[0] in str(obj)])
+
+
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
