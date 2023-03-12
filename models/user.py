@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Define User class that inherits from BaseModel"""
+from models.base_model import BaseModel
 
 
-class User:
+class User(BaseModel):
     """Represents class user
     
     Args:

@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """Module that contains the entry point of the command interpreter"""
 import cmd
+
 from models.base_model import BaseModel
 from models import storage
+from models.user import user
 
 CLASSES = [
     "BaseModel",
+    "User",
 ]
 
 
