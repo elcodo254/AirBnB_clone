@@ -9,6 +9,11 @@ from models.user import user
 CLASSES = [
     "BaseModel",
     "User",
+    "State",
+    "City",
+    "Amenity",
+    "Place",
+    "Review"
 ]
 
 
