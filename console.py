@@ -4,6 +4,10 @@ import cmd
 from models.base_model import BaseModel
 from models import storage
 
+CLASSES = [
+    "BaseModel",
+]
+
 
 def check_args(args):
     """Checks validity of arguments
@@ -13,15 +17,11 @@ def check_args(args):
         Returns:
             Error message if args is None or not a valid class else the args
     """
-    __classes = [
-            "BaseModel",
-            ]
-
     arg_list = args.split()
 
     if len(arg_list) == 0:
         print("** class name missing **")
-    elif arg_list[0] not in __classes:
+    elif arg_list[0] not in CLASSES:
         print("** class doesn't exist **")
     else:
         return arg_list
@@ -89,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
         if not arg_list:
             print([str(obj) for obj in objects])
         else:
-            if arg_list[0] not in __classes:
+            if arg_list[0] not in CLASSES:
                 print("** class doesn't exist **")
             else:
                 print([str(obj) for obj in objects
