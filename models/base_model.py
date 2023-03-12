@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Defines base class"""
 from uuid import uuid4
 from datetime import datetime

@@ -1,8 +1,10 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Module that contains tests for the BaseModel class"""
 import unittest
 from datetime import datetime
-from models.base_model import BaseModel
+import uuid from uui4
+
+import models.base_model import BaseModel
 
 
 class TestBaseModel_instatiation(unittest.TestCase):
